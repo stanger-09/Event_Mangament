@@ -1,21 +1,24 @@
 import { Injectable } from "@nestjs/common";
 import { InjectModel } from "@nestjs/mongoose";
 import { Model } from "mongoose";
-import { Event} from './Club.schema'
-import { EventDTO } from "./Club.dto"; 
+import { UserSchema,Login  } from "src/User.schema";
+import { User } from "src/User.dto";
+
+// import { Event} from './Club.schema'
+// import { EventDTO } from "./Club.dto"; 
 
 
 @Injectable()
 export class ClubService{
-    constructor(@InjectModel(Event.name) private ClubModel:Model<Event>){}
+    constructor(@InjectModel(Login.name) private ClubModel:Model<Login>){}
 
-    async createEvent(dto:EventDTO):Promise <Event>{
+    async create(dto:User):Promise <Login>{
         const event =new this.ClubModel(dto)
         return event.save();
     }
 
 
-    async EventFindAll():Promise<EventDTO[]>{
+    async EventFindAll():Promise<User[]>{
         return this.ClubModel.find().exec()
     }
 

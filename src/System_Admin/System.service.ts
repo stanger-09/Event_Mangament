@@ -1,14 +1,15 @@
 import { Body, Injectable } from "@nestjs/common";
 import { InjectModel } from "@nestjs/mongoose";
-import { Control } from "./System.schema";
+// import { Control } from "./System.schema";
 import { Model } from "mongoose";
-import { SystemDTO } from "./System.dto";
-// import {}
+// import { SystemDTO } from "./System.dto";
+import { Login} from "src/User.schema";
+import { User } from "src/User.dto";
 @Injectable()
 export class Systemservice{
-    constructor(@InjectModel(Control.name) private SystemModel:Model<Control>){}
+    constructor(@InjectModel(Login.name) private SystemModel:Model<Login>){}
 
-    async Create_Event(@Body() dto:SystemDTO):Promise<SystemDTO>{
+    async create(@Body() dto:User):Promise<User>{
         const event=new this.SystemModel(dto);
         return event;
     }
@@ -21,7 +22,7 @@ export class Systemservice{
         return this.SystemModel.deleteMany(filter);
     }
 
-    async List_Events():Promise <Control[]>{
+    async List_Events():Promise <Login[]>{
         return this.SystemModel.find().exec();
     }
 }

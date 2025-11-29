@@ -2,13 +2,14 @@ import { Module } from "@nestjs/common";
 import { MongooseModule } from "@nestjs/mongoose";
 import { Systemservice } from "./System.service";
 import { SystemController } from "./System.controller";
-import { Control ,SystemSchema} from "./System.schema";
+import { Login,UserSchema } from "src/User.schema";
 
 @Module({
     imports:[
-        MongooseModule.forFeature([{name:Control.name,schema:SystemSchema}]),
+        MongooseModule.forFeature([{name:Login.name,schema:UserSchema}]),
     ],
     providers:[Systemservice],
-    controllers:[SystemController]
+    controllers:[SystemController],
+    exports:[Systemservice]
 })
 export class SystemModule{};

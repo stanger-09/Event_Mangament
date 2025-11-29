@@ -1,6 +1,8 @@
 import { Controller ,Post,Get, Body} from "@nestjs/common";
 import { ClubService } from "./Club.service";
-import { EventDTO } from "./Club.dto";
+// import { EventDTO } from "./Club.dto";
+import { UserSchema,Login  } from "src/User.schema";
+import { User } from "src/User.dto";
 
 @Controller()
 export class ClubController{
@@ -9,13 +11,13 @@ export class ClubController{
     
 
     @Post()
-    async createEvent(@Body() dto:EventDTO ):Promise <EventDTO>{
-        console.log(dto.EventId,dto.EventName);
-        return this.clubservice.createEvent(dto);
+    async createEvent(@Body() dto:User ):Promise <User>{
+        console.log(dto.username,dto.role);
+        return this.clubservice.create(dto);
     }
 
     @Get('find')
-    async getEvents():Promise <EventDTO[]>{
+    async getEvents():Promise <User[]>{
         return this.clubservice.EventFindAll();
     }
 }
