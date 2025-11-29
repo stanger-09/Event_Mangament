@@ -11,7 +11,7 @@ export class ClubController{
     
 
     @Post()
-    async createEvent(@Body() dto:User ):Promise <User>{
+    async create(@Body() dto:User ):Promise <User>{
         console.log(dto.username,dto.role);
         return this.clubservice.create(dto);
     }

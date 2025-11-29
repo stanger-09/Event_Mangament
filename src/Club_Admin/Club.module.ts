@@ -4,7 +4,6 @@ import { ClubService } from './Club.service';
 import { MongooseModule} from '@nestjs/mongoose';
 // import {EventSchema ,Event} from './Club.schema';
 import { Login, UserSchema } from 'src/User.schema';
-import { aclservice } from 'src/ACL/acl.service';
 @Module({
     imports:[
         MongooseModule.forFeature([{name:Login.name,schema:UserSchema}]),

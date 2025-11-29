@@ -6,6 +6,7 @@ import { ClubModule } from "src/Club_Admin/Club.module";
 import { SystemModule } from "src/System_Admin/System.module";
 import { aclController } from "./acl.controller";
 import { aclservice } from "./acl.service";
+import { StudentModule } from "src/Student/Student.module";
 
 
 function roleBase(person:User){
@@ -23,7 +24,8 @@ function roleBase(person:User){
     imports:[
         MongooseModule.forFeature([{name:Login.name ,schema:UserSchema}]),
         ClubModule,
-        SystemModule
+        SystemModule,
+        StudentModule
     ],
     providers:[aclservice],
     controllers:[aclController]
