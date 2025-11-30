@@ -10,7 +10,7 @@ export class Authservice{
     constructor (@InjectModel(Login.name) private Auth:Model<Login>,
         private jwtService:JwtService){}
 
-    async sigIn(username:string ,password:string):Promise <{access_token:string}>{
+    async sigIn(username:string ,password:string):Promise <{access_token:string,username:string,userid:string}>{
         const user=await this.find(username);
         // console.log(user);
         if(!user || user?.password!==password){
@@ -19,6 +19,8 @@ export class Authservice{
         const payload={sub:user.userid ,username:user.username};
         return {
             access_token:await this.jwtService.signAsync(payload),
+            username:user.username,
+            userid:user.userid
         };
     }
 
