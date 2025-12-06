@@ -1,23 +1,28 @@
-import { Controller ,Post,Get, Body} from "@nestjs/common";
+import { Controller ,Post,Get, Body, Param, Delete} from "@nestjs/common";
 import { ClubService } from "./Club.service";
-// import { EventDTO } from "./Club.dto";
-import { UserSchema,Login  } from "src/User.schema";
-import { User } from "src/User.dto";
-
-@Controller()
+import { EventSchema ,Events} from "src/Events.schema";
+import { EventDTO } from "src/EventsDTO.dto";
+@Controller('Events')
 export class ClubController{
     constructor (private readonly clubservice:ClubService){}
 
-    
-
-    @Post()
-    async create(@Body() dto:User ):Promise <User>{
-        console.log(dto.username,dto.role);
-        return this.clubservice.create(dto);
+    @Post('add')
+    async create(@Body() dto:Events ):Promise <EventDTO>{
+        return this.clubservice.create_Event(dto);
     }
 
-    @Get('find')
-    async getEvents():Promise <User[]>{
-        return this.clubservice.EventFindAll();
+    @Get('findAll')
+    async getEvents():Promise <EventDTO[]>{
+        return this.clubservice.list_Events();
+    }
+
+    @Get('find/:title')
+    async getEvent(@Param('title') title:string):Promise <EventDTO | null>{
+        return this.clubservice.find_Event(title);
+    }
+
+    @Delete('remove/:title')
+    async removeEvent(@Param('title') title:string):Promise <EventDTO | any>{
+        return this.clubservice.remove_Event(title);
     }
 }

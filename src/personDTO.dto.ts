@@ -1,12 +1,12 @@
-import { IsInt ,IsString} from "class-validator";
+// import { IsInt ,IsString} from "class-validator";
 
-export class PersonDTO{
-    @IsInt()
-    id:number
+// export class PersonDTO{
+//     @IsInt()
+//     id:number
 
-    @IsString()
-    name:string
+//     @IsString()
+//     name:string
 
-    @IsString()
-    password:string
-}
+//     @IsString()
+//     password:string
+// }
