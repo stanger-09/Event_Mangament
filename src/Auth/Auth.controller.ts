@@ -19,7 +19,7 @@ export class Authcontroller{
     }
 
     @HttpCode(HttpStatus.OK)
-    @Post('login')
+    @Post('signin')
     async singIn(@Body() body:{username:string ,password:string}){
         return this.auth.sigIn(body.username,body.password);
     }

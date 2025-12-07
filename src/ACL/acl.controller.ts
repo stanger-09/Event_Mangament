@@ -2,12 +2,12 @@ import { Body, Controller ,Post} from "@nestjs/common";
 import type { User } from "src/User.schema";
 import { aclservice } from "./acl.service";
 import { EventDTO } from "src/EventsDTO.dto";
+import { Role } from "src/role.enum";
 
 
 @Controller()
 export class aclController{
     constructor(private readonly aclservice:aclservice){}
-
 
     @Post('register')
     async create(@Body() userdto:User,@Body() eventdto:EventDTO){

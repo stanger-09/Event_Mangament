@@ -22,7 +22,7 @@ export class Login{
     @Prop()
     password:string
 
-    @Prop()
+    @Prop({required:true,enum:['User','Admin','Student','Events','ClubAdmin']})
     role:string
 }
 

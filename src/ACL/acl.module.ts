@@ -8,19 +8,6 @@ import { aclController } from "./acl.controller";
 import { aclservice } from "./acl.service";
 import { StudentModule } from "src/Student/Student.module";
 import { Authmodule } from "src/Auth/Auth.module";
-
-
-function roleBase(person:User){
-    if(person.role==='Student')
-        return 
-    else if (person.role==='Super_Admin')
-        return
-    else if (person.role==='Admin')
-        return
-    else if (person.role==='Event')
-        return 
-}
-
 @Module({
     imports:[
         MongooseModule.forFeature([{name:Login.name ,schema:UserSchema}]),

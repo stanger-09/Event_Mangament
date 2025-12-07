@@ -5,8 +5,6 @@ import { Login } from "src/User.schema";
 import { studentService } from "src/Student/Student.service";
 import { ClubService } from "src/Club_Admin/Club.service";
 import { EventDTO } from "src/EventsDTO.dto";
-// import { SystemDTO } from "./System.dto";
-// import { Control } from "./System.schema";
 
 
 @Controller('Admin')
